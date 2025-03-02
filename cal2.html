@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calculator</title>
+    <style>
+        body {
+            background-color: #181A1B;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #222;
+            padding: 20px;
+            border-radius: 12px;
+            width: 350px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            text-align: center;
+            color: #f05454;
+        }
+        p {
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 6px;
+            background: #333;
+            color: white;
+        }
+        .result {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #f05454;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #f05454;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #ff6666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Attendance Calculator</h2>
+        <p>Enter Total Classes:</p>
+        <input type="number" id="all">
+        <p>Enter Classes Attended:</p>
+        <input type="number" id="attended">
+        <p>Desired Attendance Percentage:</p>
+        <input type="number" id="goal">
+        <div class="result">You need to attend <span id="need">___</span> more classes.</div>
+        <button type="button" onclick="calci()">Calculate</button>
+    </div>
+
+    <script>
+        function calci() {
+            let attended = parseInt(document.getElementById('attended').value);
+            let total = parseInt(document.getElementById('all').value);
+            let goal = parseInt(document.getElementById('goal').value) / 100;
+
+            if (isNaN(attended) || isNaN(total) || isNaN(goal) || total === 0) {
+                document.getElementById('need').innerText = "Invalid Input";
+                return;
+            }
+
+            let requiredClasses = Math.ceil((goal * total - attended) / (1 - goal));
+
+            document.getElementById('need').innerText = requiredClasses > 0 ? requiredClasses : "You already meet the goal!";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+body{
+    background-color: orange;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    font-family: sans-serif;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <p>Enter Total classes: </p>
+        <input type="number" id="all">
+        <p>Enter classes attended: </p>
+        <input type="number" id="attended">
+        <p>Enter your DLs</p>
+        <input type="number" id="dl">
+        <p>How much attendence you want? (in %)</p>
+        <input type="number" id="goal">
+        <h1 id="need"></h1>
+        <button type="button" onclick="calci()">Calculate</button>
+    </div>
+</body>
+<script>
+    function calci(){
+    let dl=document.getElementById('dl').value;
+    let a=document.getElementById('attended').value;
+    a=(Number)(a)+(Number)(dl);
+    let t=document.getElementById('all').value;
+    let d=document.getElementById('goal').value/100;
+    let x=Math.ceil((d*t-a)/(1-d));
+    // document.getElementById('need').innerHTML=x;
+    document.getElementById('need').innerHTML="you have to attend<br>"+x+"<br>more classes";
+    console.log(a+dl);
+    }
+</script>
+</html>
